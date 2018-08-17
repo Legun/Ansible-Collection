@@ -1,0 +1,17 @@
+# /etc/systemd/system/jetcrypto.service
+[Unit]
+Description=Jetcrypto backend service
+After=network-online.target
+
+[Service]
+WorkingDirectory=/opt/jetcrypto
+ExecStart=/usr/bin/dotnet /opt/jetcrypto/JetCryptoServer.dll
+Restart=on-failure
+RestartSec=10
+SyslogIdentifier=jetcrypto
+User=jetcrypto
+Environment=ASPNETCORE_ENVIRONMENT=Development
+Environment=DOTNET_CLI_TELEMETRY_OPTOUT=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,19 @@
+---
+- hosts: omega
+  tasks:
+    - name: Register Microsoft key and feed
+      apt:
+       deb: https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
+
+
+    - name: Install https Repository Access
+      apt:
+       name: apt-transport-https
+       state: latest
+       update_cache: yes
+
+    - name: Install .NET SDK
+      apt:
+        name: dotnet-sdk-2.1
+        state: latest
+        update_cache: yes

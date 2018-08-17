@@ -1,0 +1,22 @@
+---
+- hosts: jetcrypto
+  tasks:
+   - name: add user Jenkins
+     user:
+      name: jetcrypto
+      shell: /bin/bash
+      group: sudo
+      append: yes
+      password: kaeJ6LeeG2oi7EiY
+    
+   - name: Set authorized key taken from file
+     authorized_key:
+        user: jetcrypto
+        state: present
+        key: "{{ lookup('file', 'templates/authorized_keys') }}"
+       
+   - name: Set authorized key taken from file
+     authorized_key:
+        user: root
+        state: present
+        key: "{{ lookup('file', 'templates/authorized_keys') }}"

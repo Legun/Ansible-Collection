@@ -1,0 +1,44 @@
+[all]
+
+[all:vars]
+
+#localhost
+localhost       ansible_connection=local
+
+[test]
+sandbox ansible_ssh_host=192.168.10.33 hostname=sandbox
+
+
+#jetcrypto-developers servers
+[jetcrypto:children]
+alpha
+beta
+omega
+legacy-beta
+
+[alpha]
+alpha-server ansible_ssh_host=10.49.1.68 hostname=alpha
+
+[beta]
+beta-server ansible_ssh_host=10.49.1.66 hostname=beta
+
+[omega]
+omega-server ansible_ssh_host=10.49.1.71 hostname=omega
+
+[legacy-beta]
+legasy-beta-server ansible_ssh_host=10.49.2.54 hostname=legasy-beta
+
+#bitcoin-core nodes
+[nodes]
+coin-nodes-server ansible_ssh_host=10.49.1.70 hostname=coin-nodes
+
+#ci-server
+[jenkins]
+jenkins-server ansible_ssh_host=10.49.1.15 hostname=jenkins
+
+#Coinfia-Server
+[coinfia]
+coinfia-server  ansible_ssh_host=10.49.31.4 hostname=coinfia
+
+
+

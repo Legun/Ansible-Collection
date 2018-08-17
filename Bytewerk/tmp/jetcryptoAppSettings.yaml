@@ -1,0 +1,18 @@
+---
+-  hosts: beta
+   tasks:
+     - name: Copy config to jetcrypto
+       template:
+        src: appsettings.json
+        dest: /opt/jetcrypto/appsettings.json
+
+     - name: Copy config to jetcrypto appsettings.Development.json
+       template:
+        src: appsettings.Development.json
+        dest: /opt/jetcrypto/appsettings.Development.json
+
+
+     - name: Restart jetcrypto service
+       service:
+         name: jetcrypto
+         state: restarted

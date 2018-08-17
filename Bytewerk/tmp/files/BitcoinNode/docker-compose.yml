@@ -1,0 +1,5 @@
+bitcoin-core:
+  image: ruimarinho/bitcoin-core
+  command:
+    -printtoconsole
+    -regtest=1

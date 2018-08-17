@@ -1,0 +1,30 @@
+---
+-  hosts: omega
+   become: yes
+
+   task:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+      tags: nginx
+
+    - name: Configure nginx Jetcripto Host
+      template:
+        src: jetcrypto.conf.j2
+        dest: /etc/nginx/sites-enabled/jetcrypto.conf
+      tags: nginx
+      notify: restart nginx
+
+    - name: Start nginx Service
+      service:
+        name: nginx
+        state: reloaded
+        enabled: yes
+      tags: nginx
+
+    - name: Copy Html Files
+      copy:
+        src: files/html/
+        dest: /var/www/html/
+      tags: www

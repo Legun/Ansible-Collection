@@ -1,0 +1,11 @@
+---
+-  hosts: jetcrypto
+   tasks:
+     - name: Copy config to nginx
+       template:
+        src: jetcrypto.conf.j2
+        dest: /etc/nginx/sites-enabled/jetcrypto.conf
+     - name: Reload nginx
+       service:
+         name: nginx
+         state: reloaded

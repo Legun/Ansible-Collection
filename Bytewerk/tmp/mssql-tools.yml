@@ -1,0 +1,21 @@
+---
+- hosts: all
+  tasks:
+    - name: docker install
+      apt:
+       name: docker
+       state: latest
+
+    - name: Restart a container
+      docker_container:
+        name: mssql-tools
+        image: imunew/mssql-server-linux-with-mssql-tools
+        state: started
+        restart: yes
+        ports:
+              - "1433:1433"
+        env:
+          ACCEPT_EULA: Y
+          SA_PASSWORD: bytewerkPassword
+        volumes:
+          - /opt/mssql:/var/opt/mssql

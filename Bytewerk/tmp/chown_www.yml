@@ -1,0 +1,10 @@
+---
+-  hosts: omega
+   tasks:
+     - name: Copy config to nginx
+       file:
+        dest: /var/www
+        owner: jetcrypto
+        group: root
+        recurse: yes
+

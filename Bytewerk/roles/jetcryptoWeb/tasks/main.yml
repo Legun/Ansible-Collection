@@ -1,0 +1,5 @@
+---
+- name: Copy Web Files
+  git:
+    repo: https://okishinskiy@bitbucket.org/bytewerk_ru/jetcrypto_www.git
+    dest: /var/www/jetcrypto

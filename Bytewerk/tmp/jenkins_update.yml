@@ -1,0 +1,17 @@
+---
+- hosts: jenkins
+  tasks:
+   - name:  Backup Jenkins File
+     copy:
+      src: /usr/share/jenkins/jenkins.war
+      dest: /usr/share/jenkins/jenkins.war.back
+  
+   - name:  Update Jenkins File
+     file:
+      src: files/jenkins.war
+      dest: /usr/share/jenkins/jenkins.war
+   
+   - name:  restart Jenkins service
+     service:
+      name: jenkins
+      state: restarted

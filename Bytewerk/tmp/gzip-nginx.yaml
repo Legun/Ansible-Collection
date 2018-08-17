@@ -1,0 +1,17 @@
+---
+- hosts: legacy-beta
+  become: yes
+  tasks:
+    - name: Configure nginx Jetcripto Host
+      template:
+        src: gzip-nginx.conf
+        dest: /etc/nginx/conf.d/gzip.conf
+      tags: nginx
+ 
+
+    - name: Start nginx Service
+      service:
+        name: nginx
+        state: reloaded
+        enabled: yes
+      tags: nginx

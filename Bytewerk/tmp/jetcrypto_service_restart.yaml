@@ -1,0 +1,7 @@
+---
+-  hosts: omega
+   tasks:
+     - name: Restart jetcrypto service
+       service:
+         name: jetcrypto
+         state: restarted

@@ -1,0 +1,11 @@
+---
+-  hosts: nodes
+   tasks:
+     - name: Copy docker nodes
+       file:
+        src: files/jetcrypto_dockernodes
+        dest: /home/ubuntu/jetcryptoNodes
+        owner: ubuntu
+        group: ubuntu
+        mode: 0777
+

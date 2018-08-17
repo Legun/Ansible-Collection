@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# {{ ansible_managed }}
+
+. {{openvpn_etcdir}}/vars
+
+[ $# -lt 1 ] && echo "Usage: $0 <CLIENT>"
+
+$EASY_RSA/pkitool $@

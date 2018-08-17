@@ -1,0 +1,10 @@
+---
+- hosts: beta
+  tasks:
+    - name: Install Redis
+      apt:
+       name: redis-server
+       state: latest
+       update_cache: yes
+    - name: Set addres Redis-server to Localhost
+      shell: echo "127.0.0.1 redis01.Bytewerk.local" >> /etc/hosts

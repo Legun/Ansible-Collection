@@ -1,0 +1,8 @@
+#
+#About: This will install Nginx
+#
+---
+- hosts: legacy-beta
+  become: yes
+  roles:
+  - nginx
