@@ -1,0 +1,37 @@
+---
+- name: install dependency for docker
+  apt: 
+    upgrade: dist
+    update_cache: yes
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+      
+- name: Add Docker’s official GPG key
+  shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  
+- name: add apt key fingerprint
+  shell: sudo apt-key fingerprint 0EBFCD88
+  
+- name: add repos for docker
+  shell: sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  
+- name: install docker-ce
+  apt:
+    update_cache: yes
+    name: docker-ce  
+    state: latest
+
+- name: install docker-compose
+  shell: sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
+  
+- name: add user group
+  shell: sudo groupadd docker
+  
+- name: add user to docker group
+  shell: sudo usermod -aG docker $USER  
+

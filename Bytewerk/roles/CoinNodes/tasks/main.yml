@@ -1,0 +1,12 @@
+---
+- name: Dash-Coin
+  docker_container:
+    name: dash
+    image: bytewerk/dash:latest
+    command: redis-server --appendonly yes
+    state: present
+    recreate: yes
+    exposed_ports:
+      - 6379
+    volumes_from:
+      - mydata
