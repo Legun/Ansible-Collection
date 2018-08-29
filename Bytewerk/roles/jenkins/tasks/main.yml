@@ -1,0 +1,9 @@
+---
+- name: backup jenkins file
+  shell: mv /usr/share/jenkins/jenkins.war /usr/share/jenkins/jenkins.war.back  
+  
+- name: Download jenkins file
+  get_url:
+    url: http://updates.jenkins-ci.org/download/war/2.121.3/jenkins.war
+    dest: /usr/share/jenkins/jenkins.war
+  notify: restart jenkins service

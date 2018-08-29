@@ -40,5 +40,9 @@ jenkins-server ansible_ssh_host=10.49.1.15 hostname=jenkins
 [coinfia]
 coinfia-server  ansible_ssh_host=10.49.31.4 hostname=coinfia
 
+#Jenkins  Server
+[jenkins]
+jenkins-server ansible_ssh_host=10.49.1.15 hostname=jenkins
+
 
 

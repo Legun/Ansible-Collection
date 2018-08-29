@@ -1,0 +1,8 @@
+#
+#About: This will install Nginx
+#
+---
+- hosts: jenkins
+  become: yes
+  roles:
+  - jenkins
